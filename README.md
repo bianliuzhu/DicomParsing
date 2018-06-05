@@ -5,9 +5,9 @@ cornerstone WADO Image Loader
  一个通过 HTTP (WADO-URI) 或 DICOMWeb (WADO-RS) 的 "DICOM P10 instances" 基于[cornerstone](https://docs.cornerstonejs.org/) 的医学影像解析程序。
  可以将 [cornerstone](https://docs.cornerstonejs.org/) 与 WADO-URI servers、DICOMWeb servers 或 任何返回 DICOM P10 instances (例如: [Orthanc](http://www.orthanc-server.com/) 或 自定义 servers )的任何基于 HTTP 的 servers 集成在一起。
 
-故障排除
+我屮艸芔茻 全是坑!
 ---------------
-使用过程中遇到遇到问题[联系我](https://github.com/bianliuzhu/DicomParsing),看到后第一时间回复.
+使用过程中遇到遇到问题[联系我](https://github.com/bianliuzhu/DicomParsing)帮你爬坑!,看到后第一时间回复.
 
 使用方法
 ---------------
