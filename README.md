@@ -1,136 +1,40 @@
 [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coverage-image]][coverage-url]
 
-cornerstone WADO Image Loader
+    cornerstone WADO Image Loader
 =============================
 
-A [cornerstone](https://github.com/cornerstonejs/cornerstone) Image Loader for DICOM P10 instances over
-HTTP (WADO-URI) or DICOMWeb (WADO-RS).  This can be used to integrate cornerstone with WADO-URI
-servers, DICOMWeb servers or any other HTTP based server that returns DICOM P10 instances
- (e.g. [Orthanc](http://www.orthanc-server.com/) or custom servers)
+ 一个通过 HTTP (WADO-URI) 或 DICOMWeb (WADO-RS) 的 "DICOM P10 instances" 基于[cornerstone](https://docs.cornerstonejs.org/) 的医学影像解析程序。
+ 可以将 [cornerstone](https://docs.cornerstonejs.org/) 与 WADO-URI servers、DICOMWeb servers 或 任何返回 DICOM P10 instances (例如: [Orthanc](http://www.orthanc-server.com/) 或 自定义 servers )的任何基于 HTTP 的 servers 集成在一起。
 
-Troubleshooting
+故障排除
 ---------------
+使用过程中遇到遇到问题[联系我](https://github.com/bianliuzhu/DicomParsing),看到后第一时间回复.
 
-Having problems viewing your images with cornerstonWADOImageLoader?  Check out the
-[troubleshooting guide](https://github.com/cornerstonejs/cornerstoneWADOImageLoader/wiki/troubleshooting).
-
-Live Examples
+使用方法
 ---------------
+* 1.安装 [ XAMPP ](https://www.apachefriends.org/zh_cn/download.html)
 
-[Click here for a live example of this library in use!](http://rawgithub.com/cornerstonejs/cornerstoneWADOImageLoader/master/examples/index.html)
+* 2.清空 [ htdocs ] 目录下所有东西[必须清空], tdocs 在 XAMPP 安装目录下仔细找哦! 我的在: [D:\xampp\htdocs]
 
-You can also see it in action with the
-[cornerstoneDemo application](https://github.com/chafey/cornerstoneDemo).
+* 3.将 DICOM Parsing 下载到 htdocs 目录下 [并解压!必须解压!]
 
-Install
+* 4.打开浏览器 在地址栏输入 127.0.0.1 点击 DICOMParsing 文件夹 
+
+* 5.看控制台是否有报错, 没有的话[DICOMParsing 跑起来了]
+
+注意
 -------
+可能 有的时候 会报错 没有找到 cornerstoneWADOImageLoader.js 这样的错 都备好了 打开后 [ CTRL+S] 到相目录就好了
 
-Get the distributed unminimized files:
+未压缩:
 
 * [cornerstoneWADOImageLoader.js](https://unpkg.com/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoader.js)
 * [cornerstoneWADOImageLoaderCodecs.js](https://unpkg.com/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoaderCodecs.js)
 * [cornerstoneWADOImageLoaderWebWorker.js](https://unpkg.com/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoaderWebWorker.js)
 
-or the distributed minimized files:
+压缩版:
 
 * [cornerstoneWADOImageLoader.min.js](https://unpkg.com/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoader.min.js)
 * [cornerstoneWADOImageLoaderCodecs.min.js](https://unpkg.com/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoaderCodecs.min.js)
 * [cornerstoneWADOImageLoaderWebWorker.min.js](https://unpkg.com/cornerstone-wado-image-loader/dist/cornerstoneWADOImageLoaderWebWorker.min.js)
-
-Usage
--------
-
-The cornerstoneWADOImageLoader depends on the following external libraries which should be loaded before cornerstoneWADOImageLoader.js:
-
-
-1. [dicomParser](https://github.com/cornerstonejs/dicomParser) 
-2. [cornerstone](https://github.com/cornerstonejs/cornerstone)
-
-*New in 1.0.0*: Specify the cornerstone instance you want to register the loader with.
-
-````javascript
-cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
-````
-
-Have your code configure the web worker framework with the paths to the web worker and the codecs:
-
-```javascript
-   var config = {
-        webWorkerPath : '../../dist/cornerstoneWADOImageLoaderWebWorker.js',
-        taskConfiguration: {
-            'decodeTask' : {
-                codecsPath: '../dist/cornerstoneWADOImageLoaderCodecs.js'
-            }
-        }
-    };
-    cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
-```
-
-See the [web workers](docs/WebWorkers.md) documentation for more details on configuring.
-
-Key Features
-------------
-
-* Implements a [cornerstone ImageLoader](https://github.com/cornerstonejs/cornerstone/wiki/ImageLoader) for DICOM P10 Instances via a HTTP get request.
-  * Can be used with a WADO-URI server
-  * Can be used with Orthanc's file endpoint
-  * Can be used with any server that returns DICOM P10 instances via HTTP GET
-* Implements a [cornerstone ImageLoader](https://github.com/cornerstonejs/cornerstone/wiki/ImageLoader) for WADO-RS (DICOMWeb)
-* Supports many popular transfer syntaxes and photometric interpretations [see full list](https://github.com/cornerstonejs/cornerstoneWADOImageLoader/blob/master/docs/TransferSyntaxes.md) and [codec](docs/Codecs.md) for more information.
-* Framework to execute CPU intensive tasks in [web workers](docs/WebWorkers.md)
-  * Used for image decoding
-  * Can be used for your own CPU intensive tasks (e.g. image processing)
-
-Backlog
--------
-
-* Support for images with pixel padding
-* Support for high bit (e.g. mask out burned in overlays)
-* Free up DICOM P10 instance after decoding to reduce memory consumption
-* Add support for compressed images to WADO-RS loader
-* Look at using EMSCRIPEN based build of IJG for JPEG
-* Consolidate all EMSCRIPTEN codecs into one build to cut down on memory use and startup times
-* Add support for bulk data items to WADO-RS Loader
-* Add events to webWorkerManager so its activity can be monitored
-* Add support for issuing progress events from web worker tasks
-
-FAQ
-===
-
-_Why is this a separate library from cornerstone?_
-
-Mainly to avoid adding a dependency to cornerstone for the DICOM parsing library.  While cornerstone is
-intended to be used to display medical images that are stored in DICOM, cornerstone aims to simplify
-the use of medical imaging and therefore tries to hide some of the complexity that exists within
-DICOM.  It is also desirable to support display of non DICOM images so a DICOM independent image model
-makes sense.
-
-_How do I build this library myself?_
-
-See the documentation [here](docs/Building.md)
-
-_How do I add my own custom web worker tasks?_
-
-See the documentation [here](docs/WebWorkers.md)
-
-_How do I create imageIds that work with this image loader?_
-
-See the documentation [here](docs/ImageIds.md)
-
-Copyright
-============
-Copyright 2016 Chris Hafey [chafey@gmail.com](mailto:chafey@gmail.com)
-
-[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
-[license-url]: LICENSE
-
-[npm-url]: https://npmjs.org/package/cornerstone-wado-image-loader
-[npm-version-image]: http://img.shields.io/npm/v/cornerstone-wado-image-loader.svg?style=flat
-[npm-downloads-image]: http://img.shields.io/npm/dm/cornerstone-wado-image-loader.svg?style=flat
-
-[travis-url]: http://travis-ci.org/cornerstonejs/cornerstoneWADOImageLoader
-[travis-image]: https://travis-ci.org/cornerstonejs/cornerstoneWADOImageLoader.svg?branch=master
-
-[coverage-url]: https://coveralls.io/github/cornerstonejs/cornerstoneWADOImageLoader?branch=master
-[coverage-image]: https://coveralls.io/repos/github/cornerstonejs/cornerstoneWADOImageLoader/badge.svg?branch=master
