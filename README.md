@@ -1,7 +1,7 @@
 [![NPM version][npm-version-image]][npm-url] [![NPM downloads][npm-downloads-image]][npm-url] [![MIT License][license-image]][license-url] [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coverage-image]][coverage-url]
 
-    cornerstone WADO Image Loader
+cornerstone WADO Image Loader
 =============================
 
  一个通过 HTTP (WADO-URI) 或 DICOMWeb (WADO-RS) 的 "DICOM P10 instances" 基于[cornerstone](https://docs.cornerstonejs.org/) 的医学影像解析程序。
