@@ -23,7 +23,7 @@ cornerstone WADO Image Loader
 
 注意
 -------
-可能 有的时候 会报错 没有找到 cornerstoneWADOImageLoader.js 这样的错 都备好了 打开后 [ CTRL+S] 到相目录就好了
+可能 有的时候 会报错 没有找到 cornerstoneWADOImageLoader.js 这样的错 都备好了 打开后 [ CTRL+S] 到报错相对应得目录就好了!
 
 未压缩:
 
