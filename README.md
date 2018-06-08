@@ -1,5 +1,5 @@
 
-cornerstone WADO Image Loader
+Dicom Parsing
 =============================
 
  一个通过 HTTP (WADO-URI) 或 DICOMWeb (WADO-RS) 的 "DICOM P10 instances" 基于[cornerstone](https://docs.cornerstonejs.org/) 的医学影像解析程序。
